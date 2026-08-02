@@ -7,163 +7,227 @@
 <title>Love.exe ❤️</title>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
 *{
     box-sizing:border-box;
 }
 
 body{
     margin:0;
-    height:100vh;
-    background:#050505;
-    color:#ff8fcf;
-    font-family:'Courier New', monospace;
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow:hidden;
+    background:linear-gradient(135deg,#090014,#26001f,#ff4d9d);
+    font-family:'Poppins',sans-serif;
+    color:white;
+    overflow-x:hidden;
 }
+
 
 .container{
-    background:rgba(255,255,255,0.08);
-    border:1px solid #ff8fcf;
-    border-radius:20px;
-    padding:30px;
+
     width:90%;
-    max-width:500px;
+    max-width:600px;
+    padding:35px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(15px);
+    border-radius:25px;
     text-align:center;
-    box-shadow:0 0 30px #ff4da6;
+    box-shadow:0 0 40px rgba(255,100,180,0.5);
+
 }
+
 
 h1{
-    color:#ff4da6;
+    color:#ffb6dd;
 }
+
 
 button{
-    padding:12px 25px;
-    margin:15px;
+
     border:none;
-    border-radius:20px;
-    font-size:18px;
+    padding:14px 25px;
+    margin:10px;
+    border-radius:30px;
     cursor:pointer;
+    font-size:16px;
+    background:#ff4d9d;
+    color:white;
+    transition:.3s;
+
 }
 
-.yes{
-    background:#ff4da6;
-    color:white;
+
+button:hover{
+
+    transform:scale(1.1);
+
 }
 
-.no{
-    background:#444;
-    color:white;
-    position:absolute;
-}
 
 .hidden{
     display:none;
 }
 
-.heart{
-    position:absolute;
-    color:#ff4da6;
-    animation:fall 5s linear infinite;
+
+.card{
+
+    margin-top:20px;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(0,0,0,.25);
+
 }
+
+
+
+.heart{
+
+position:fixed;
+top:-20px;
+font-size:25px;
+animation:fall linear infinite;
+
+}
+
 
 @keyframes fall{
-    0%{
-        transform:translateY(-100px);
-        opacity:1;
-    }
-    100%{
-        transform:translateY(100vh);
-        opacity:0;
-    }
+
+to{
+transform:translateY(110vh);
+opacity:0;
 }
 
-.typing{
-    border-right:2px solid pink;
-    white-space:nowrap;
-    overflow:hidden;
-    animation:typing 3s steps(40);
 }
 
-@keyframes typing{
-    from{width:0}
-    to{width:100%}
+
+.progress{
+
+height:10px;
+background:#333;
+border-radius:20px;
+overflow:hidden;
+
 }
 
-.option{
-    display:block;
-    width:80%;
-    margin:10px auto;
-    background:#ff4da6;
-    color:white;
+
+.bar{
+
+height:100%;
+width:0;
+background:#ff4d9d;
+animation:load 3s forwards;
+
 }
+
+
+@keyframes load{
+
+to{
+width:100%;
+}
+
+}
+
 
 </style>
 
 </head>
 
+
 <body>
 
+
 <div class="container">
+
 
 <div id="loading">
 
 <h1>💻 HusbandOS Starting...</h1>
 
-<p class="typing">
-Loading love system...
+<p>
+Initializing Love System...
 </p>
 
-<p>
-✓ Checking memories...<br>
-✓ Scanning heart...<br>
-✓ Finding my favorite person...
-</p>
+
+<div class="progress">
+<div class="bar"></div>
+</div>
+
+
+<br>
 
 <p>
+✓ Checking memories<br>
+✓ Scanning heart<br>
+✓ Finding favorite person
+</p>
+
+
+<h2>
 Found:
 <br>
-<strong>Tasu Moni 😘❤️</strong>
-</p>
+Tasu Moni 😘❤️
+</h2>
 
-<button class="yes" onclick="startLove()">
-Continue ❤️
+
+<button onclick="showQuestion()">
+Enter ❤️
 </button>
 
+
 </div>
+
+
 
 
 
 <div id="question" class="hidden">
 
-<h1>System Question #001</h1>
+<h1>
+System Question #001
+</h1>
+
+<h2>
+Tasu Moni 😘
+</h2>
+
 
 <p>
-Tasu Moni 😘
-<br><br>
 Do you love me? ❤️
 </p>
 
-<button class="yes" onclick="loveAccepted()">
+
+<button onclick="yesLove()">
 YES ❤️
 </button>
 
-<button id="no" class="no">
+
+<button id="no">
 NO 💔
 </button>
+
 
 </div>
 
 
 
+
+
 <div id="welcome" class="hidden">
 
-<h1>ACCESS GRANTED ✅</h1>
+<h1>
+ACCESS GRANTED ✅
+</h1>
 
-<p>
+
+<h2>
 Welcome, my wife Tasu Moni 😘❤️
-</p>
+</h2>
+
 
 <p>
 Love connection:
@@ -171,72 +235,41 @@ Love connection:
 100%
 </p>
 
-<p>
-Status:
-<br>
-My favorite person forever 💕
-</p>
 
-<button class="yes" onclick="babyShark()">
-Continue 🦈
+<button onclick="showTimer()">
+Open Love System ⏳
 </button>
+
 
 </div>
 
 
 
-<div id="shark" class="hidden">
-
-<h1>System Question #002</h1>
-
-<p>
-Who is my Baby Shark? 🦈❤️
-</p>
-
-<button class="option" onclick="wrong()">
-A) A real shark 🦈
-</button>
-
-<button class="option" onclick="wrong()">
-B) My computer 🤖
-</button>
-
-<button class="option" onclick="correct()">
-C) Tasu Moni 😘
-</button>
-
-</div>
 
 
+<div id="timer" class="hidden">
 
-<div id="final" class="hidden">
 
 <h1>
-🦈❤️ Baby Shark Found!
+❤️ Our Love Connection ❤️
 </h1>
 
+
+<div class="card">
+
 <p>
-Identity:
+Connected Since:
 <br>
-Tasu Moni 😘
+<b>26 March 2026</b>
 </p>
 
-<p>
-The cutest shark in my ocean 🌊❤️
-</p>
 
-<hr>
+<h2 id="count">
+</h2>
+
 
 <p>
-Dear Tasu Moni ❤️
-<br><br>
-You are my favorite person,
-my happiness,
-and my home.
-<br><br>
-Love.exe will run forever ❤️
-<br><br>
-System Status:
+Status:
 <br>
 Forever Connected 💕
 </p>
@@ -244,94 +277,236 @@ Forever Connected 💕
 </div>
 
 
+<button onclick="showAI()">
+Meet TasuAI 🤖
+</button>
+
+
 </div>
+
+
+
+
+
+<div id="ai" class="hidden">
+
+
+<h1>
+🤖 TasuAI v1.0
+</h1>
+
+
+<div class="card">
+
+<p id="answer">
+Hello! I am TasuAI ❤️
+<br>
+Ask me something.
+</p>
+
+
+</div>
+
+
+<button onclick="ask('Who is the most beautiful person?')">
+Beauty Test 😍
+</button>
+
+
+<button onclick="ask('Who is my Baby Shark?')">
+Baby Shark 🦈
+</button>
+
+
+<button onclick="ask('Who is my forever partner?')">
+Forever Partner 💍
+</button>
+
+
+</div>
+
+
+
+
+
+</div>
+
 
 
 <script>
 
-function startLove(){
 
-document.getElementById("loading").classList.add("hidden");
+function hideAll(){
+
+document.querySelectorAll(".container > div")
+.forEach(x=>x.classList.add("hidden"));
+
+}
+
+
+
+function showQuestion(){
+
+hideAll();
+
 document.getElementById("question").classList.remove("hidden");
 
 }
 
 
 
-function loveAccepted(){
+function yesLove(){
 
-document.getElementById("question").classList.add("hidden");
+hideAll();
+
 document.getElementById("welcome").classList.remove("hidden");
 
-createHearts();
+hearts();
 
 }
 
-
-
-function babyShark(){
-
-document.getElementById("welcome").classList.add("hidden");
-document.getElementById("shark").classList.remove("hidden");
-
-}
-
-
-
-function correct(){
-
-document.getElementById("shark").classList.add("hidden");
-document.getElementById("final").classList.remove("hidden");
-
-createHearts();
-
-}
-
-
-
-function wrong(){
-
-alert("ERROR 404 ❌\nWrong answer!\nSearching again...\nBaby Shark = Tasu Moni 😘❤️");
-
-}
 
 
 
 let no=document.getElementById("no");
 
-no.addEventListener("mouseover",function(){
 
-let x=Math.random()*300;
-let y=Math.random()*300;
+no.onmouseover=function(){
 
-no.style.left=x+"px";
-no.style.top=y+"px";
+no.style.left=Math.random()*300+"px";
 
-});
+no.style.top=Math.random()*300+"px";
 
+}
 
 
-function createHearts(){
+
+
+
+function showTimer(){
+
+hideAll();
+
+document.getElementById("timer").classList.remove("hidden");
+
+}
+
+
+
+function showAI(){
+
+hideAll();
+
+document.getElementById("ai").classList.remove("hidden");
+
+}
+
+
+
+
+function ask(question){
+
+
+let text="";
+
+
+if(question.includes("beautiful")){
+
+text="Processing... ❤️<br><br>Answer:<br>Tasu Moni 😘❤️<br><br>Confidence: ∞%";
+
+}
+
+
+if(question.includes("Baby")){
+
+text="🦈 Baby Shark Found!<br><br>Identity:<br>Tasu Moni 😘❤️";
+
+}
+
+
+if(question.includes("forever")){
+
+text="💍 Forever Partner:<br><br>Tasu Moni ❤️<br><br>System cannot find another option.";
+
+}
+
+
+document.getElementById("answer").innerHTML=text;
+
+
+}
+
+
+
+
+
+function updateTimer(){
+
+
+let start=new Date("2026-03-26T00:00:00");
+
+let now=new Date();
+
+
+let diff=now-start;
+
+
+let days=Math.floor(diff/(1000*60*60*24));
+
+let hours=Math.floor(diff/(1000*60*60)%24);
+
+let minutes=Math.floor(diff/(1000*60)%60);
+
+let seconds=Math.floor(diff/1000%60);
+
+
+
+document.getElementById("count").innerHTML=
+
+days+" Days<br>"+
+hours+" Hours<br>"+
+minutes+" Minutes<br>"+
+seconds+" Seconds";
+
+
+}
+
+
+setInterval(updateTimer,1000);
+
+updateTimer();
+
+
+
+function hearts(){
+
 
 setInterval(()=>{
 
-let heart=document.createElement("div");
 
-heart.className="heart";
-heart.innerHTML="❤️";
+let h=document.createElement("div");
 
-heart.style.left=Math.random()*100+"%";
+h.className="heart";
 
-heart.style.fontSize=(Math.random()*20+10)+"px";
+h.innerHTML="❤️";
 
-document.body.appendChild(heart);
+h.style.left=Math.random()*100+"vw";
+
+h.style.animationDuration=(3+Math.random()*5)+"s";
+
+
+document.body.appendChild(h);
+
 
 setTimeout(()=>{
-heart.remove();
-},5000);
+
+h.remove();
+
+},8000);
 
 
 },300);
+
 
 }
 
