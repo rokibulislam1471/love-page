@@ -3,96 +3,341 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>One Question ❤️</title>
+
+<title>Love.exe ❤️</title>
 
 <style>
+*{
+    box-sizing:border-box;
+}
+
 body{
     margin:0;
-    font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#ff758c,#ff7eb3);
     height:100vh;
+    background:#050505;
+    color:#ff8fcf;
+    font-family:'Courier New', monospace;
     display:flex;
     justify-content:center;
     align-items:center;
+    overflow:hidden;
 }
 
-.box{
-    background:white;
-    padding:40px;
+.container{
+    background:rgba(255,255,255,0.08);
+    border:1px solid #ff8fcf;
     border-radius:20px;
+    padding:30px;
+    width:90%;
+    max-width:500px;
     text-align:center;
-    width:350px;
-    position:relative;
+    box-shadow:0 0 30px #ff4da6;
+}
+
+h1{
+    color:#ff4da6;
 }
 
 button{
     padding:12px 25px;
-    font-size:18px;
+    margin:15px;
     border:none;
-    border-radius:10px;
+    border-radius:20px;
+    font-size:18px;
     cursor:pointer;
 }
 
-#yes{
-    background:#28a745;
+.yes{
+    background:#ff4da6;
     color:white;
 }
 
-#no{
-    background:#dc3545;
+.no{
+    background:#444;
     color:white;
     position:absolute;
 }
+
+.hidden{
+    display:none;
+}
+
+.heart{
+    position:absolute;
+    color:#ff4da6;
+    animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+    0%{
+        transform:translateY(-100px);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+}
+
+.typing{
+    border-right:2px solid pink;
+    white-space:nowrap;
+    overflow:hidden;
+    animation:typing 3s steps(40);
+}
+
+@keyframes typing{
+    from{width:0}
+    to{width:100%}
+}
+
+.option{
+    display:block;
+    width:80%;
+    margin:10px auto;
+    background:#ff4da6;
+    color:white;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div class="box">
+<div class="container">
 
-<h1>Do you love me? ❤️</h1>
+<div id="loading">
 
+<h1>💻 HusbandOS Starting...</h1>
+
+<p class="typing">
+Loading love system...
+</p>
+
+<p>
+✓ Checking memories...<br>
+✓ Scanning heart...<br>
+✓ Finding my favorite person...
+</p>
+
+<p>
+Found:
 <br>
+<strong>Tasu Moni 😘❤️</strong>
+</p>
 
-<button id="yes">Yes ❤️</button>
-
-<button id="no">No 💔</button>
+<button class="yes" onclick="startLove()">
+Continue ❤️
+</button>
 
 </div>
 
+
+
+<div id="question" class="hidden">
+
+<h1>System Question #001</h1>
+
+<p>
+Tasu Moni 😘
+<br><br>
+Do you love me? ❤️
+</p>
+
+<button class="yes" onclick="loveAccepted()">
+YES ❤️
+</button>
+
+<button id="no" class="no">
+NO 💔
+</button>
+
+</div>
+
+
+
+<div id="welcome" class="hidden">
+
+<h1>ACCESS GRANTED ✅</h1>
+
+<p>
+Welcome, my wife Tasu Moni 😘❤️
+</p>
+
+<p>
+Love connection:
+<br>
+100%
+</p>
+
+<p>
+Status:
+<br>
+My favorite person forever 💕
+</p>
+
+<button class="yes" onclick="babyShark()">
+Continue 🦈
+</button>
+
+</div>
+
+
+
+<div id="shark" class="hidden">
+
+<h1>System Question #002</h1>
+
+<p>
+Who is my Baby Shark? 🦈❤️
+</p>
+
+<button class="option" onclick="wrong()">
+A) A real shark 🦈
+</button>
+
+<button class="option" onclick="wrong()">
+B) My computer 🤖
+</button>
+
+<button class="option" onclick="correct()">
+C) Tasu Moni 😘
+</button>
+
+</div>
+
+
+
+<div id="final" class="hidden">
+
+<h1>
+🦈❤️ Baby Shark Found!
+</h1>
+
+<p>
+Identity:
+<br>
+Tasu Moni 😘
+</p>
+
+<p>
+The cutest shark in my ocean 🌊❤️
+</p>
+
+<hr>
+
+<p>
+Dear Tasu Moni ❤️
+<br><br>
+You are my favorite person,
+my happiness,
+and my home.
+<br><br>
+Love.exe will run forever ❤️
+<br><br>
+System Status:
+<br>
+Forever Connected 💕
+</p>
+
+</div>
+
+
+</div>
+
+
 <script>
 
-const no=document.getElementById("no");
+function startLove(){
 
-no.addEventListener("mouseover",()=>{
+document.getElementById("loading").classList.add("hidden");
+document.getElementById("question").classList.remove("hidden");
 
-let x=Math.random()*250;
-let y=Math.random()*250;
+}
+
+
+
+function loveAccepted(){
+
+document.getElementById("question").classList.add("hidden");
+document.getElementById("welcome").classList.remove("hidden");
+
+createHearts();
+
+}
+
+
+
+function babyShark(){
+
+document.getElementById("welcome").classList.add("hidden");
+document.getElementById("shark").classList.remove("hidden");
+
+}
+
+
+
+function correct(){
+
+document.getElementById("shark").classList.add("hidden");
+document.getElementById("final").classList.remove("hidden");
+
+createHearts();
+
+}
+
+
+
+function wrong(){
+
+alert("ERROR 404 ❌\nWrong answer!\nSearching again...\nBaby Shark = Tasu Moni 😘❤️");
+
+}
+
+
+
+let no=document.getElementById("no");
+
+no.addEventListener("mouseover",function(){
+
+let x=Math.random()*300;
+let y=Math.random()*300;
 
 no.style.left=x+"px";
 no.style.top=y+"px";
 
 });
 
-document.getElementById("yes").onclick=function(){
 
-document.body.innerHTML=`
-<div style="display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-font-size:40px;
-background:pink;
-font-family:Arial;
-text-align:center;">
-❤️ I knew it!! ❤️<br><br>
-Love you forever 🥰
-</div>`;
+
+function createHearts(){
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"%";
+
+heart.style.fontSize=(Math.random()*20+10)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+
+},300);
 
 }
 
+
 </script>
+
 
 </body>
 </html>
