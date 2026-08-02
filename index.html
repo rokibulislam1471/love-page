@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,75 +11,107 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
+
 *{
-    box-sizing:border-box;
+box-sizing:border-box;
 }
 
+
 body{
-    margin:0;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#090014,#26001f,#ff4d9d);
-    font-family:'Poppins',sans-serif;
-    color:white;
-    overflow-x:hidden;
+
+margin:0;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+
+font-family:Poppins,sans-serif;
+
+background:
+linear-gradient(135deg,#090014,#250020,#ff4d9d);
+
+color:white;
+
 }
 
 
 .container{
 
-    width:90%;
-    max-width:600px;
-    padding:35px;
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(15px);
-    border-radius:25px;
-    text-align:center;
-    box-shadow:0 0 40px rgba(255,100,180,0.5);
+width:90%;
+max-width:650px;
+
+padding:35px;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(20px);
+
+border-radius:30px;
+
+text-align:center;
+
+box-shadow:0 0 50px #ff4d9d;
 
 }
 
 
+
 h1{
-    color:#ffb6dd;
+
+color:#ffc1e3;
+
 }
 
 
 button{
 
-    border:none;
-    padding:14px 25px;
-    margin:10px;
-    border-radius:30px;
-    cursor:pointer;
-    font-size:16px;
-    background:#ff4d9d;
-    color:white;
-    transition:.3s;
+padding:14px 25px;
+
+margin:8px;
+
+border:none;
+
+border-radius:30px;
+
+background:#ff4d9d;
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.3s;
 
 }
 
 
 button:hover{
 
-    transform:scale(1.1);
+transform:scale(1.1);
 
 }
+
 
 
 .hidden{
-    display:none;
+
+display:none;
+
 }
+
 
 
 .card{
 
-    margin-top:20px;
-    padding:20px;
-    border-radius:20px;
-    background:rgba(0,0,0,.25);
+background:rgba(0,0,0,.3);
+
+padding:20px;
+
+border-radius:20px;
+
+margin:20px 0;
 
 }
 
@@ -87,9 +120,12 @@ button:hover{
 .heart{
 
 position:fixed;
+
 top:-20px;
+
+animation:fall 6s linear infinite;
+
 font-size:25px;
-animation:fall linear infinite;
 
 }
 
@@ -97,8 +133,11 @@ animation:fall linear infinite;
 @keyframes fall{
 
 to{
+
 transform:translateY(110vh);
+
 opacity:0;
+
 }
 
 }
@@ -107,9 +146,10 @@ opacity:0;
 .progress{
 
 height:10px;
+
 background:#333;
+
 border-radius:20px;
-overflow:hidden;
 
 }
 
@@ -117,20 +157,34 @@ overflow:hidden;
 .bar{
 
 height:100%;
+
 width:0;
+
 background:#ff4d9d;
-animation:load 3s forwards;
+
+animation:loading 3s forwards;
 
 }
 
 
-@keyframes load{
+@keyframes loading{
 
 to{
+
 width:100%;
+
 }
 
 }
+
+
+
+#no{
+
+position:absolute;
+
+}
+
 
 
 </style>
@@ -146,36 +200,43 @@ width:100%;
 
 <div id="loading">
 
-<h1>💻 HusbandOS Starting...</h1>
 
-<p>
-Initializing Love System...
-</p>
+<h1>
+💻 HusbandOS Booting...
+</h1>
 
 
 <div class="progress">
+
 <div class="bar"></div>
+
 </div>
 
 
-<br>
-
 <p>
-✓ Checking memories<br>
-✓ Scanning heart<br>
-✓ Finding favorite person
+
+✓ Loading memories<br>
+✓ Checking heart<br>
+✓ Searching favorite person
+
 </p>
 
 
 <h2>
+
 Found:
+
 <br>
+
 Tasu Moni 😘❤️
+
 </h2>
 
 
-<button onclick="showQuestion()">
-Enter ❤️
+<button onclick="question()">
+
+Start System ❤️
+
 </button>
 
 
@@ -185,11 +246,15 @@ Enter ❤️
 
 
 
-<div id="question" class="hidden">
+<div id="q" class="hidden">
+
 
 <h1>
+
 System Question #001
+
 </h1>
+
 
 <h2>
 Tasu Moni 😘
@@ -197,17 +262,23 @@ Tasu Moni 😘
 
 
 <p>
+
 Do you love me? ❤️
+
 </p>
 
 
-<button onclick="yesLove()">
+<button onclick="yes()">
+
 YES ❤️
+
 </button>
 
 
 <button id="no">
+
 NO 💔
+
 </button>
 
 
@@ -217,27 +288,88 @@ NO 💔
 
 
 
-<div id="welcome" class="hidden">
+<div id="home" class="hidden">
+
 
 <h1>
+
 ACCESS GRANTED ✅
+
 </h1>
 
 
 <h2>
+
 Welcome, my wife Tasu Moni 😘❤️
+
 </h2>
 
 
 <p>
+
 Love connection:
 <br>
 100%
+
 </p>
 
 
-<button onclick="showTimer()">
-Open Love System ⏳
+<button onclick="health()">
+
+❤️ Love Scan
+
+</button>
+
+
+<button onclick="timer()">
+
+⏳ Love Timer
+
+</button>
+
+
+<button onclick="ai()">
+
+🤖 TasuAI
+
+</button>
+
+
+<button onclick="secret()">
+
+🔐 Secret File
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div id="health" class="hidden">
+
+
+<h1>
+❤️ Love System Scan
+</h1>
+
+
+<div class="card">
+
+Loyalty: 100% ❤️<br>
+Missing You: 999% 🥺<br>
+Love Level: Unlimited ♾️<br>
+Happiness: Maximum 😍<br>
+
+</div>
+
+
+<button onclick="back()">
+
+Back
+
 </button>
 
 
@@ -251,34 +383,31 @@ Open Love System ⏳
 
 
 <h1>
-❤️ Our Love Connection ❤️
+❤️ Our Connection
 </h1>
 
 
 <div class="card">
 
-<p>
-Connected Since:
+Together since:
+
 <br>
-<b>26 March 2026</b>
-</p>
 
+26 March 2026
 
-<h2 id="count">
-</h2>
+<br><br>
 
+<h2 id="count"></h2>
 
-<p>
-Status:
-<br>
 Forever Connected 💕
-</p>
 
 </div>
 
 
-<button onclick="showAI()">
-Meet TasuAI 🤖
+<button onclick="back()">
+
+Back
+
 </button>
 
 
@@ -292,74 +421,117 @@ Meet TasuAI 🤖
 
 
 <h1>
-🤖 TasuAI v1.0
+🤖 TasuAI
 </h1>
 
 
-<div class="card">
+<div class="card" id="answer">
 
-<p id="answer">
-Hello! I am TasuAI ❤️
-<br>
-Ask me something.
+Ask me something ❤️
+
+</div>
+
+
+<button onclick="ask(1)">
+Who is cutest? 😍
+</button>
+
+
+<button onclick="ask(2)">
+Who wins arguments? 😂
+</button>
+
+
+<button onclick="ask(3)">
+Who is Baby Shark? 🦈
+</button>
+
+
+<button onclick="message()">
+
+Random Love ❤️
+
+</button>
+
+
+<button onclick="back()">
+
+Back
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div id="secret" class="hidden">
+
+
+<h1>
+🔐 Secret File
+</h1>
+
+
+<p>
+Enter password:
 </p>
 
 
-</div>
+<input id="pass">
 
 
-<button onclick="ask('Who is the most beautiful person?')">
-Beauty Test 😍
+<br>
+
+
+<button onclick="unlock()">
+
+Unlock
+
 </button>
 
 
-<button onclick="ask('Who is my Baby Shark?')">
-Baby Shark 🦈
-</button>
-
-
-<button onclick="ask('Who is my forever partner?')">
-Forever Partner 💍
-</button>
+<p id="secretText"></p>
 
 
 </div>
 
 
-
-
-
 </div>
+
+
 
 
 
 <script>
 
 
-function hideAll(){
+function hide(){
 
-document.querySelectorAll(".container > div")
+document.querySelectorAll(".container>div")
 .forEach(x=>x.classList.add("hidden"));
 
 }
 
 
 
-function showQuestion(){
+function question(){
 
-hideAll();
+hide();
 
-document.getElementById("question").classList.remove("hidden");
+q.classList.remove("hidden");
 
 }
 
 
 
-function yesLove(){
+function yes(){
 
-hideAll();
+hide();
 
-document.getElementById("welcome").classList.remove("hidden");
+home.classList.remove("hidden");
 
 hearts();
 
@@ -367,25 +539,44 @@ hearts();
 
 
 
-
 let no=document.getElementById("no");
-
 
 no.onmouseover=function(){
 
-no.style.left=Math.random()*300+"px";
+no.style.left=Math.random()*500+"px";
 
-no.style.top=Math.random()*300+"px";
+no.style.top=Math.random()*400+"px";
+
+alert("Are you sure Tasu Moni? 😢❤️");
 
 }
 
 
 
 
+function back(){
 
-function showTimer(){
+hide();
 
-hideAll();
+home.classList.remove("hidden");
+
+}
+
+
+
+function health(){
+
+hide();
+
+document.getElementById("health").classList.remove("hidden");
+
+}
+
+
+
+function timer(){
+
+hide();
 
 document.getElementById("timer").classList.remove("hidden");
 
@@ -393,9 +584,9 @@ document.getElementById("timer").classList.remove("hidden");
 
 
 
-function showAI(){
+function ai(){
 
-hideAll();
+hide();
 
 document.getElementById("ai").classList.remove("hidden");
 
@@ -403,86 +594,88 @@ document.getElementById("ai").classList.remove("hidden");
 
 
 
+function ask(x){
 
-function ask(question){
-
-
-let text="";
+let t="";
 
 
-if(question.includes("beautiful")){
+if(x==1)
 
-text="Processing... ❤️<br><br>Answer:<br>Tasu Moni 😘❤️<br><br>Confidence: ∞%";
-
-}
+t="Processing... 🤖<br><br>Answer:<br>Tasu Moni 😘❤️";
 
 
-if(question.includes("Baby")){
+if(x==2)
 
-text="🦈 Baby Shark Found!<br><br>Identity:<br>Tasu Moni 😘❤️";
-
-}
+t="System Error 😂<br><br>Husband cannot win.<br>Winner: Tasu Moni 👑";
 
 
-if(question.includes("forever")){
+if(x==3)
 
-text="💍 Forever Partner:<br><br>Tasu Moni ❤️<br><br>System cannot find another option.";
-
-}
+t="🦈 Baby Shark Found!<br><br>Tasu Moni ❤️";
 
 
-document.getElementById("answer").innerHTML=text;
-
+answer.innerHTML=t;
 
 }
 
 
 
+let msgs=[
+
+"I would choose you in every lifetime ❤️",
+
+"You are my favorite notification 😘",
+
+"My heart has only one user: Tasu Moni ❤️",
+
+"Love.exe will never uninstall 💕"
+
+];
 
 
-function updateTimer(){
+function message(){
 
-
-let start=new Date("2026-03-26T00:00:00");
-
-let now=new Date();
-
-
-let diff=now-start;
-
-
-let days=Math.floor(diff/(1000*60*60*24));
-
-let hours=Math.floor(diff/(1000*60*60)%24);
-
-let minutes=Math.floor(diff/(1000*60)%60);
-
-let seconds=Math.floor(diff/1000%60);
-
-
-
-document.getElementById("count").innerHTML=
-
-days+" Days<br>"+
-hours+" Hours<br>"+
-minutes+" Minutes<br>"+
-seconds+" Seconds";
-
+answer.innerHTML=
+msgs[Math.floor(Math.random()*msgs.length)];
 
 }
 
 
-setInterval(updateTimer,1000);
 
-updateTimer();
+
+function secret(){
+
+hide();
+
+document.getElementById("secret").classList.remove("hidden");
+
+}
+
+
+
+function unlock(){
+
+if(pass.value=="TasuMoni"){
+
+secretText.innerHTML=
+
+"ACCESS GRANTED ❤️<br><br>I love you forever 😘";
+
+}
+
+else{
+
+secretText.innerHTML="Wrong password 😢";
+
+}
+
+}
 
 
 
 function hearts(){
 
-
 setInterval(()=>{
-
 
 let h=document.createElement("div");
 
@@ -492,27 +685,41 @@ h.innerHTML="❤️";
 
 h.style.left=Math.random()*100+"vw";
 
-h.style.animationDuration=(3+Math.random()*5)+"s";
-
-
 document.body.appendChild(h);
 
 
-setTimeout(()=>{
-
-h.remove();
-
-},8000);
+setTimeout(()=>h.remove(),6000);
 
 
 },300);
 
+}
+
+
+
+
+
+function update(){
+
+let start=new Date("2026-03-26");
+
+let now=new Date();
+
+let d=Math.floor((now-start)/86400000);
+
+count.innerHTML=d+" Days ❤️";
 
 }
+
+
+setInterval(update,1000);
+
+update();
 
 
 </script>
 
 
 </body>
+
 </html>
